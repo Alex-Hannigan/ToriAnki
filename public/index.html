@@ -1,0 +1,96 @@
+<!-- Copyright (c) 2022, Alex Hannigan -->
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="author" content="Alex Hannigan">
+        <meta name="description" content="焼き鳥食べ放題の暗記ゲーム！A memory game with all-you-can-eat chicken!">
+        <meta name="keywords" content="鶏, 暗記, 鳥, 居酒屋, ゲーム, chicken, memory, izakaya, game">
+
+        <!-- For sharing on social media -->
+        <meta property="og:title" content="鶏暗記（Tori Anki）">
+        <meta property="og:type" content="game" />
+        <meta property="og:image" content="https://tori-anki.web.app/images/tori_anki.png">
+        <meta property="og:url" content="https://tori-anki.web.app/">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta property="og:description" content="焼き鳥食べ放題の暗記ゲーム！A memory game with all-you-can-eat chicken!">
+        <meta property="og:site_name" content="鶏暗記（Tori Anki）">
+        <meta name="twitter:image:alt" content="Tori Anki">
+
+        <title>鶏暗記（Tori Anki）</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preload" as="font" href="/fonts/FredokaOne-Regular.woff" type="font/woff" crossorigin="anonymous">
+        <link rel="preload" as="font" href="/fonts/KiwiMaru-Regular.woff" type="font/woff" crossorigin="anonymous">
+        <link rel="preload" as="font" href="/fonts/Comfortaa-VariableFont.woff" type="font/woff" crossorigin="anonymous">
+        <link rel="preload" as="font" href="/fonts/Sen-Regular.woff" type="font/woff" crossorigin="anonymous">
+
+        <!-- Favicons -->
+        <link rel="manifest" href="/manifest.webmanifest">
+        <link rel="icon" href="/favicon.ico" sizes="any">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    </head>
+    <body>
+        <div id="loading">
+            <h2 id="loading-text">Loading... <span id="loading-percentage">0</span>%</h2>
+        </div>
+        <div id="win-images-container">
+            <span id="win-image-1" class="win-image"></span>
+            <span id="win-image-2" class="win-image"></span>
+            <span id="win-image-3" class="win-image"></span>
+            <span id="win-image-4" class="win-image"></span>
+            <span id="win-image-5" class="win-image"></span>
+            <span id="win-image-6" class="win-image"></span>
+            <span id="win-image-7" class="win-image"></span>
+            <span id="win-image-8" class="win-image"></span>
+            <span id="win-image-9" class="win-image"></span>
+            <span id="win-image-10" class="win-image"></span>
+            <span id="win-image-11" class="win-image"></span>
+            <span id="win-image-12" class="win-image"></span>
+            <span id="win-image-13" class="win-image"></span>
+            <span id="win-image-14" class="win-image"></span>
+        </div>
+        <section id="main">
+            <button id="language-btn"><span class="round-icon">EN</span></button>
+            <button id="info-btn"><span class="round-icon">?</span></button>
+            <button id="back-icon-btn"><span class="round-icon">&#10132;</span></button>
+            <h3 id="main-title">Tori Anki</h3>
+            <p id="info-text-1"></p>
+            <div id="good-bad-bird-container">
+                <div id="example-images-container">
+                    <img src="images/rightFace5.png">
+                    <img src="images/wrongFace6.png">
+                </div>
+                <div id="check-container">
+                    <span>✔︎</span>
+                    <span>✖︎</span>
+                </div>
+                <div id="caption-container">
+                    <span></span>
+                    <span>Do not eat</span>
+                </div>
+            </div>
+            <p id="info-text-2"></p>
+            <div id="fail-img-container">
+                <p class="come-again come-again-horizontal">またの<br>ご来店を</p>
+                <img src="./images/rightFace1.png" id="game-over-img">
+                <img src="./images/finger.png" id="finger-img">
+                <p class="come-again come-again-horizontal">お待ちして<br>おります！</p>
+            </div>
+            <h2 id="score">Score: <span id="end-score"></span></h2>
+            <p class="come-again come-again-vertical">またのご来店を<br>お待ちしております！</p>
+            <p class="come-again" id="come-again-win">またのご来店を<br>お待ちしております！</p>
+            <div id="bg-img-container"></div>
+            <button class="game-btn" id="start-btn">Start Game</button>
+            <button class="game-btn" id="home-btn">Play Again</button>
+            <button class="game-btn" id="back-btn">Back</button>
+            <p class="copyright" id="info-copyright">© 2022 Alex Hannigan</p>
+        </section>
+        <canvas></canvas>
+        <script src="confetti.js"></script>
+        <script src="game.js" type="module"></script>
+        <p class="copyright" id="main-copyright">© 2022 Alex Hannigan</p>
+    </body>
+</html>

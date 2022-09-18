@@ -1,0 +1,383 @@
+/* Copyright (c) 2022, Alex Hannigan */
+
+/* Fredoka One regular */
+@font-face {
+    font-family: 'Fredoka One';
+    src: url('/fonts/FredokaOne-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Kiwi Maru regular */
+@font-face {
+    font-family: 'Kiwi Maru';
+    src: url('/fonts/KiwiMaru-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Comfortaa variable */
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('/fonts/Comfortaa-VariableFont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Sen regular */
+@font-face {
+    font-family: 'Sen';
+    src: url('/fonts/Sen-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #266867;
+    position: relative;
+    /* Disable text select */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+canvas {
+    background-color: #266867;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    touch-action: none;
+    z-index: 5;
+}
+
+#info-btn, #back-icon-btn, #language-btn {
+    width: 12vmin;
+    height: 12vmin;
+    border-radius: 6vmin;
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+#language-btn {
+    right: unset;
+    left: 20px;
+    background-color: #F8BC24;
+    display: none;
+}
+
+#language-btn span {
+    font-size: 4vmin;
+}
+
+#back-icon-btn {
+    transform: scaleX(-1);
+    display: none;
+}
+
+button {
+    color: #1D1D1D;
+    font-family: 'Fredoka One', cursive;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+    z-index: 1;
+}
+
+#loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000AA;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading-text {
+    color: #EEEEEE;
+    font-family: 'Fredoka One', cursive;
+    font-size: 5vmin;
+}
+
+.round-icon {
+    font-size: 5vmin;
+}
+
+#main {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    overflow: auto;
+    position: relative;
+}
+
+#bg-img-container {
+    width: 100%;
+    height: 100%;
+    background-image: url(./images/izakaya.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.game-btn {
+    width: 40vmax;
+    min-height: 14vmin;
+    font-size: 5vmin;
+    border: none;
+    border-radius: 5px;
+    white-space: nowrap;
+    margin-bottom: 15vh;
+    background-image: linear-gradient(-180deg, #F2F2F2 0%, #9d9d9d 100%);
+    z-index: 100;
+    display: none;
+}
+
+#back-btn {
+    margin-bottom: 100px;
+}
+
+#info-text-1, #info-text-2 {
+    display: none;
+    color: #EEEEEE;
+    margin: 20px;
+    font-family: 'Kiwi Maru', cursive;
+    font-size: 5.5vmin;
+}
+
+#main-title {
+    font-size: 8vmin;
+    margin-top: 50px;
+    margin-bottom: 0;
+    font-family: 'Fredoka One', cursive;
+    text-shadow: -2px 2px #111111;
+    color: #EEEEEE;
+    z-index: 100;
+}
+
+#score {
+    color: #EEEEEE;
+    font-family: 'Fredoka One', cursive;
+    text-shadow: -2px 2px black;
+    display: none;
+    z-index: 100;
+    font-size: 6vmin;
+}
+
+#game-over-img {
+    max-width: 50vmin;
+    max-height: 50vmin;
+    z-index: 1;
+}
+
+#finger-img {
+    max-width: 25vmin;
+    max-height: 25vmin;
+    animation: wag 0.5s infinite;
+}
+
+#fail-img-container {
+    display: none;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+}
+
+#open-mouth-left-img, #open-mouth-right-img {
+    max-width: 50vmin;
+    max-height: 50vmin;
+    z-index: 1;
+}
+
+#open-mouth-right-img {
+    transform: scaleX(-1);
+}
+
+.copyright {
+    color: #EEEEEE;
+    font-family: 'Comfortaa';
+    font-size: 4vmin;
+}
+
+#info-copyright {
+    display: none;
+}
+
+#main-copyright {
+    display: block;
+    position: absolute;
+    bottom: 0;
+}
+
+.come-again {
+    color: #EEEEEE;
+    font-family: 'Kiwi Maru', cursive;
+    font-size: 5vmin;
+    align-self: center;
+    display: none;
+    z-index: 100;
+}
+
+.come-again-horizontal {
+    margin: 30px;
+}
+
+.come-again-vertical, #come-again-win {
+    text-align: center;
+}
+
+.yellow-text {
+    color: #F8BC24;
+}
+
+/* Win images */
+#win-images-container {
+    text-align: center;
+    position: absolute;
+    display: none;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); 
+}
+
+.win-image {
+    width: 25vmin;
+    height: 25vmin;
+    margin: 4vmin;
+    background-size: contain;
+    background-position: center;
+}
+
+#win-image-1 {
+    background-image:url("./images/rightFace1.png");
+}
+#win-image-2 {
+    background-image:url("./images/rightFace2.png");
+}
+#win-image-3 {
+    background-image:url("./images/rightFace3.png");
+}
+#win-image-4 {
+    background-image:url("./images/rightFace4.png");
+}
+#win-image-5 {
+    background-image:url("./images/rightFace5.png");
+}
+#win-image-6 {
+    background-image:url("./images/wrongFace1.png");
+}
+#win-image-7 {
+    background-image:url("./images/wrongFace2.png");
+}
+#win-image-8 {
+    background-image:url("./images/wrongFace3.png");
+}
+#win-image-9 {
+    background-image:url("./images/wrongFace4.png");
+}
+#win-image-10 {
+    background-image:url("./images/wrongFace5.png");
+}
+#win-image-11 {
+    background-image:url("./images/wrongFace6.png");
+}
+#win-image-12 {
+    background-image:url("./images/wrongFace7.png");
+}
+#win-image-13 {
+    background-image:url("./images/wrongFace8.png");
+}
+#win-image-14 {
+    background-image:url("./images/wrongFace9.png");
+}
+
+#good-bad-bird-container {
+    width: 90%;
+    border: 4px solid #0084B7;
+    background-color: #0000005e;
+    border-radius: 15px;
+    padding: 20px 0;
+    display: none;
+}
+#example-images-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+#example-images-container img {
+    max-width: 100%;
+    max-height: 30vmin;
+}
+#check-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#check-container span {
+    width: 30vmin;
+    text-align: center;
+    font-size: 15vmin;
+    color: #0F0;
+    height: 15vmin;
+    line-height: 15vmin;
+}
+#check-container span:nth-child(2) {
+    color: #F00;
+}
+#caption-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    display: none;
+}
+#caption-container span {
+    width: 30vmin;
+    text-align: center;
+    font-size: 5vmin;
+    color: #EEEEEE;
+    font-family: 'Fredoka One', cursive;
+}
+
+@media screen and (orientation:landscape) {
+    #score {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+}
+
+@keyframes wag {
+    50% {transform: rotate(30deg);}
+}
